@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogAPI;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PassengerController;
+use App\Http\Controllers\TicketController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +31,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserController::class, 'user']);
     Route::post('logout', [UserController::class, 'logout']);
 });
+
+
+Route::get('/passenger', [PassengerController::class, 'Passenger']);
+Route::get('/ticket', [TicketController::class, 'Ticket']);
+
+
 
  // protected route for creating a new post
  Route::post('/posts', [PostController::class, 'store']);
