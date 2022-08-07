@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\TicketController;
+use App\Http\Controllers\AgenceController;
 
 
 /*
@@ -24,15 +25,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get("list",[BlogAPI::class,'list']);
+
+//SUPER ADIMIN ROUTERS
 Route::post("register",[UserController::class,'register']);
 Route::post("login",[UserController::class,'login']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserController::class, 'user']);
     Route::post('logout', [UserController::class, 'logout']);
+    Route::POST('companyregister',[AgenceController::class,'store']);
+    Route::GET('list-of-company',[AgenceController::class,'showAll']);
+    Route::PATCH('updatecompany/{company}',[AgenceController::class,'update']);
 });
 
-
+//PASSENGERS ROUTERS
 Route::get('/passenger', [PassengerController::class, 'Passenger']);
 Route::post("/passengerregister",[PassengerController::class,'passengerregister']);
 Route::get('/ticket', [TicketController::class, 'Ticket']);
