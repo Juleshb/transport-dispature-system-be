@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AgenceController;
+use App\Http\Controllers\BussController;
 
 
 /*
@@ -41,7 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
 // COMPANY ADIMIN
 Route::post("AdminLogin",[AgenceController::class,'AdminLogin']);
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('user', [UserController::class, 'user']);
+    Route::post('addbuss', [BussController::class, 'store']);
     Route::post('logout', [UserController::class, 'logout']);
     Route::POST('companyregister',[AgenceController::class,'store']);
     Route::GET('list-of-company',[AgenceController::class,'showAll']);
