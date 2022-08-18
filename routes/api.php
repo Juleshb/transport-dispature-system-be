@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("list",[BlogAPI::class,'list']);
+
 
 //SUPER ADIMIN ROUTERS
 Route::POST('/superadminregister',[SystemUsersController::class,'store']);
