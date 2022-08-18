@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Validator;
@@ -28,14 +29,18 @@ class SystemUsersController extends Controller
                 ], 401);
             }
 
-            $user = User::where('email', $request->email)->first();
+             $user = Auth::user();
+
+        $token = $user->createToken('token')->plainTextToken;
+
+        $cookie = cookie('jwt', $token, 60 * 24);
 
             return response()->json([
                 'status' => true,
                 'user'=>$user->name,
                 'role_title'=>DB::table('roles')->select('role_name')->where('id',$user->role)->get(),
                 'message' => 'User Logged In Successfully',
-                'token' => $user->createToken('sanctumToken')->plainTextToken
+                'token' => $user->createToken('sanctumToken')->plainTextToken 
             ], 200);
 
         }
