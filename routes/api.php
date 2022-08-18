@@ -42,15 +42,15 @@ Route::middleware('auth:sanctum')->group(function () {
 // COMPANY ADIMIN
 Route::post("AdminLogin",[AgenceController::class,'AdminLogin']);
 Route::middleware('auth:sanctum')->group(function () {
-   
+    Route::post('addbuss', [BussController::class, 'store']);
+    Route::GET('list-of-buss',[BussController::class,'showAll']);
+
     Route::post('logout', [UserController::class, 'logout']);
-    Route::POST('companyregister',[AgenceController::class,'store']);
-    Route::GET('list-of-company',[AgenceController::class,'showAll']);
+   
     Route::PATCH('updatecompany/{company}',[AgenceController::class,'update']);
 });
 
-Route::post('addbuss', [BussController::class, 'store']);
-Route::GET('list-of-buss',[BussController::class,'showAll']);
+
 
 
 //PASSENGERS ROUTERS
