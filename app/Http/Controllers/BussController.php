@@ -23,7 +23,15 @@ class BussController extends Controller
         );
 
         return response([
-            'results'=>'buss successfully'
+            'results'=>'buss created successfully'
           ]);
     }
+     //show all busses
+     public function showAll(){
+        return response([
+           'companies list'=>buss::all()
+        ]);
+       }
+       
+   
 }

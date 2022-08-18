@@ -50,6 +50,7 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 Route::post('addbuss', [BussController::class, 'store']);
+Route::GET('list-of-buss',[BussController::class,'showAll']);
 
 
 //PASSENGERS ROUTERS
