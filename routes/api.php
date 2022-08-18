@@ -9,6 +9,7 @@ use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\BussController;
+use App\Http\Controllers\SystemUsersController;
 
 
 /*
@@ -25,9 +26,17 @@ use App\Http\Controllers\BussController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
 Route::get("list",[BlogAPI::class,'list']);
 
 //SUPER ADIMIN ROUTERS
+Route::POST('/superadminregister',[SystemUsersController::class,'store']);
+Route::POST('/login',[SystemUsersController::class,'loginUser']);
+
+Route::POST('/role',[SystemUsersController::class,'rolestore']);
+Route::GET('/users',[SystemUsersController::class,'allusers']);
+
+
 Route::post("register",[UserController::class,'register']);
 Route::post("login",[UserController::class,'login']);
 
