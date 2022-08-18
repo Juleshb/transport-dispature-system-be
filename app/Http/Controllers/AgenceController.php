@@ -12,6 +12,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class AgenceController extends Controller
 {
     public function store(request $request){
+      if(auth()->user()->role== 1){
         $request->validate(
         ['company_name'=>'required',
         'company_Admin'=>'required',
@@ -29,6 +30,10 @@ class AgenceController extends Controller
        'results'=>'company recorded successfully'
      ]);
     }
+    else{
+      return response(['message'=>'you are not allowed to perform this action']);
+  }
+  }
     //show all companies
     public function showAll(){
      return response([
