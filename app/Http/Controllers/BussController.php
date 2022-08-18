@@ -6,49 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\buss;
 class BussController extends Controller
 {
-    function buss()
-    {
-return buss::all();
-    }
-
-    public function index()
-    {
-        //
-        $post = Post::all();
-        return response()->json([
-            'message' => 'success',
-            'posts' => $post
-        ], 200);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        # code...
-        $this->validate(
-            $request,
-            [
+    
+    public function store(request $request){
+        $request->validate(
+        [
                 'buss-name' => 'required',
                 'driver-name' => 'required',
                 'buss-code' => 'required'
             ]
         );
-        $post = $request->user()->posts()->create(
-            [
+        buss::create([
                 'buss-name' => $request->input('buss-name'),
                 'driver-name' => $request->input('driver-name'),
                 'buss-code' => $request->input('buss-code'),
             ]
         );
 
-        return response()->json([
-            'message' => 'success',
-            'post' => $post
-        ], 200);
+        return response([
+            'results'=>'buss successfully'
+          ]);
     }
 }
