@@ -33,7 +33,7 @@ class AgenceController extends Controller
           'name' => $request->company_name,
           'email' => $request->company_Email,
           'password' => Hash::make($request->password),
-          'role'=> $request->role,
+          'role'=> 2
       ]);
      
      return response([
