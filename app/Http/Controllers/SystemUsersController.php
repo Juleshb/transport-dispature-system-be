@@ -35,7 +35,7 @@ class SystemUsersController extends Controller
 
         $cookie = cookie('jwt', $token, 60 * 24);
 
-            return response()->json([
+            return response([
                 'status' => true,
                 'user'=>$user->name,
                 'role_title'=>DB::table('roles')->select('role_name')->where('id',$user->role)->get(),
