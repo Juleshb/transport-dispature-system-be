@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Agence;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -19,15 +20,23 @@ class AgenceController extends Controller
         'company_Admin'=>'required',
         'company_Code'=>'required',
         'password'=>'required',
+        'company_Email'=>'required',
         'company_OwnershipType'=>'required']);
         Agence::create([
             'company_name'=>$request->company_name,
             'company_Admin'=>$request->company_Admin,
             'company_Code'=>$request->company_Code,
-           'password'=>hash::make($request->password),
+            'company_Email'=>$request->company_Email,
            'company_OwnershipType'=>$request->company_OwnershipType,
            'role'=>'2'
         ]);
+        User::create([
+          'name' => $request->company_name,
+          'email' => $request->doctor_email,
+          'password' => Hash::make($request->password),
+          'role'=> 2
+      ]);
+     
      return response([
        'results'=>'company recorded successfully'
      ]);

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('company_name');
             $table->string('company_Admin');
+            $table->string('company_Email');
             $table->string('company_Code');
             $table->string('password');
             $table->string('company_OwnershipType');
