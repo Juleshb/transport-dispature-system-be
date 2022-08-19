@@ -48,7 +48,7 @@ class AgenceController extends Controller
   }
   }
     //update companies
-    public function update(company $company,request $request){
+    public function update(Agence $company,request $request){
       if(auth()->user()->role== 1){
 
 
@@ -73,16 +73,17 @@ class AgenceController extends Controller
         'company_Admin'=>'required',
         'password'=>'required'
     ]);
-    if(Auth()->guard('company')->attempt([
+    if(Auth()->guard('Agence')->attempt([
         'company_Admin'=>$request->company_Admin,
         'password'=>$request->password,]))
         {
 
-        $Admin= Agence::where('company_Admin',$request->company_Admin)->first();
-        $token=$Admin->createToken('AdminToken',['agences'])->plainTextToken;
+        $Admin= Auth::Agence();
+        $token = $user->createToken('token')->plainTextToken;
+        $cookie = cookie('jwt', $token, 60 * 24);
         return response([
             'name'=>$Admin->company_name,
-            'TOKEN'=>$token]);
+            'TOKEN'=>$token])->withCookie($cookie);
         }else
         {
        return response([
