@@ -41,7 +41,7 @@ class SystemUsersController extends Controller
                 'role_title'=>DB::table('roles')->select('role_name')->where('id',$user->role)->get(),
                 'message' => 'User Logged In Successfully',
                 'token' => $user->createToken('sanctumToken')->plainTextToken 
-            ]->withCookie($cookie), 200);
+            ])->withCookie($cookie);
 
         }
 
