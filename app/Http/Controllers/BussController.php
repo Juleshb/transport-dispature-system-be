@@ -8,6 +8,7 @@ class BussController extends Controller
 {
     
     public function store(request $request){
+        if(auth()->user()->role== 2){
         $request->validate(
         [
                 'buss-name' => 'required',
@@ -24,7 +25,10 @@ class BussController extends Controller
 
         return response([
             'results'=>'buss created successfully'
-          ]);
+          ]);}
+          else{
+            return response(['message'=>'you are not allowed to perform this action']);
+        }
     }
      //show all busses
      public function showAll(){
