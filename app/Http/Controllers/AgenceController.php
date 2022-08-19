@@ -26,7 +26,7 @@ class AgenceController extends Controller
             'company_Code'=>$request->company_Code,
            'password'=>hash::make($request->password),
            'company_OwnershipType'=>$request->company_OwnershipType,
-           'role'=>'admin'
+           'role'=>'2'
         ]);
      return response([
        'results'=>'company recorded successfully'
