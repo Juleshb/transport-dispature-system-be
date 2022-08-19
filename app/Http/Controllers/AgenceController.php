@@ -27,7 +27,7 @@ class AgenceController extends Controller
             'company_Code'=>$request->company_Code,
             'company_Email'=>$request->company_Email,
            'company_OwnershipType'=>$request->company_OwnershipType,
-           'role'=>'2'
+           
         ]);
         User::create([
           'name' => $request->company_name,
