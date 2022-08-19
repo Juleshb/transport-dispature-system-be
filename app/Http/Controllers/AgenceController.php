@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Agence;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -24,7 +25,8 @@ class AgenceController extends Controller
             'company_Admin'=>$request->company_Admin,
             'company_Code'=>$request->company_Code,
            'password'=>hash::make($request->password),
-           'company_OwnershipType'=>$request->company_OwnershipType
+           'company_OwnershipType'=>$request->company_OwnershipType,
+           'role'=>'admin'
         ]);
      return response([
        'results'=>'company recorded successfully'
@@ -36,18 +38,29 @@ class AgenceController extends Controller
   }
     //show all companies
     public function showAll(){
+      if(auth()->user()->role== 1){
      return response([
         'companies list'=>Agence::all()
      ]);
     }
+    else{
+      return response(['message'=>'you are not allowed to perform this action']);
+  }
+  }
     //update companies
     public function update(company $company,request $request){
+      if(auth()->user()->role== 1){
+
 
      $company->update($request->all());
      return response([
        'updated results'=>$company
      ]);
     }
+    else{
+      return response(['message'=>'you are not allowed to perform this action']);
+  }
+  }
 
 
 
@@ -78,5 +91,10 @@ class AgenceController extends Controller
        ]);
     }
 
+  }
+  public function logout(request $request){
+    auth::guard('Agence')->logout();
+    return response([
+    'message'=>'you are logged out']);
   }
 }
