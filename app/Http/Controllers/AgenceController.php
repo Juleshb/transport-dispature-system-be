@@ -32,7 +32,7 @@ class AgenceController extends Controller
         ]);
         User::create([
           'name' => $request->company_name,
-          'email' => $request->doctor_email,
+          'email' => $request->company_Email,
           'password' => Hash::make($request->password),
           'role'=> 2
       ]);
