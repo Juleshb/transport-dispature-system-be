@@ -14,7 +14,7 @@ class Agence extends Authenticatable
     use HasFactory, HasApiTokens,Notifiable;
     public $timestamps=false;
     protected $fillable=['company_name','company_Admin','company_Code',
-    'password','company_OwnershipType','created_at','updated_at'];
+    'password','company_OwnershipType','created_at','role','updated_at'];
 
     // public function Doctor(){
     // return $this->hasMany(Doctor::class);
