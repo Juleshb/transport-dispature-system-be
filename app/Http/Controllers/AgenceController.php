@@ -19,7 +19,6 @@ class AgenceController extends Controller
         ['company_name'=>'required',
         'company_Admin'=>'required',
         'company_Code'=>'required',
-        'password'=>'required',
         'company_Email'=>'required',
         'company_OwnershipType'=>'required']);
         Agence::create([
