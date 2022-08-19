@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('driver-name');
             $table->string('buss-code');
             $table->unsignedBigInteger('agence_id');
-            $table->foreign('agence_id')->references('id')->on('agences')
+            $table->foreign('agence_id')->references('id')->on('users')
                                          ->onUpdate('cascade')
                                          ->ondelete('cascade');
             $table->timestamps();

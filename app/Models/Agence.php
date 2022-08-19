@@ -21,8 +21,6 @@ class Agence extends Authenticatable
     // public function profile(){
     //     return $this->hasOne(Profile::class);
     // }
-    public function buss(){
-        return $this->hasMany(buss::class);
-        }
+    
    
 }

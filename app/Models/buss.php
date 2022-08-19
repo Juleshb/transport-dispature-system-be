@@ -17,6 +17,6 @@ class buss extends Model
     use HasFactory;
 
     public function Agence(){
-        return $this->belongsTo(Agence::class);
+        return $this->belongsTo(User::class);
       }
 }
