@@ -11,7 +11,12 @@ class buss extends Model
         'buss-name',
         'driver-name',
         'buss-code',
+        'agence_id'
         
     ];
     use HasFactory;
+
+    public function Agence(){
+        return $this->belongsTo(Agence::class);
+      }
 }

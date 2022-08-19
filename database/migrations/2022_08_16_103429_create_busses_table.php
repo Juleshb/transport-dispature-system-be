@@ -18,6 +18,10 @@ return new class extends Migration
             $table->string('buss-name');
             $table->string('driver-name');
             $table->string('buss-code');
+            $table->unsignedBigInteger('agence_id');
+            $table->foreign('agence_id')->references('id')->on('agences')
+                                         ->onUpdate('cascade')
+                                         ->ondelete('cascade');
             $table->timestamps();
         });
     }

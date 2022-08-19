@@ -20,6 +20,7 @@ class BussController extends Controller
                 'buss-name' => $request->input('buss-name'),
                 'driver-name' => $request->input('driver-name'),
                 'buss-code' => $request->input('buss-code'),
+                'agence_id'=>auth()->user()->id
             ]
         );
 
@@ -31,11 +32,16 @@ class BussController extends Controller
         }
     }
      //show all busses
-     public function showAll(){
-        return response([
-           'companies list'=>buss::all()
-        ]);
-       }
-       
-   
-}
+     
+
+       public function showAll(){
+        if(auth()->user()->role=='2'){
+     return response([
+        'buss list'=>buss::where('agence_id',auth()->user()->id)->get()
+     ]);
+    }
+    else{
+    return response([
+        'message'=>'you are not allowed'
+    ]);
+    }}}
