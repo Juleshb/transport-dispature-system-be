@@ -20,12 +20,7 @@ return new class extends Migration
             ->ondelete('cascade');
         });
 
-        Schema::table('agences', function (Blueprint $table) {
-            $table->unsignedBigInteger('role');
-            $table->foreign('role')->references('id')->on('roles')
-            ->onUpdate('cascade')
-            ->ondelete('cascade');
-        });
+        
     }
 
     /**
@@ -35,10 +30,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('agences', function (Blueprint $table) {
-            $table->dropForeign(['role']);
-            $table->dropColumn('role');
-        });
+        
         Schema::table('users', function (Blueprint $table) {
             $table->dropForeign(['role']);
             $table->dropColumn('role');
