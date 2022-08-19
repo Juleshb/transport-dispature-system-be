@@ -16,7 +16,7 @@ class Agence extends Authenticatable
     use HasFactory, HasApiTokens,Notifiable;
     public $timestamps=false;
     protected $fillable=['company_name','company_Admin','company_Code',
-    'password','company_OwnershipType','password','role','company_Email'];
+    'company_OwnershipType','role','company_Email'];
 
     public function profile(){
         return $this->hasOne(Profile::class);
