@@ -10,6 +10,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\BussController;
 use App\Http\Controllers\SystemUsersController;
+use App\Http\Controllers\RouterController;
 
 
 /*
@@ -53,6 +54,9 @@ Route::post("AdminLogin",[AgenceController::class,'AdminLogin']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('addbuss', [BussController::class, 'store']);
     Route::GET('list-of-buss',[BussController::class,'showAll']);
+    Route::post('addrouter', [RouterController::class, 'store']);
+    Route::GET('list-of-router',[RouterController::class,'showAll']);
+
 
     Route::post('logout', [UserController::class, 'logout']);
    
