@@ -36,7 +36,7 @@ class RouterController extends Controller
        public function showAll(){
         if(auth()->user()->role=='2'){
      return response([
-        'buss list'=>Router::where('agence_id',auth()->user()->id)->get()
+        'Router list'=>Router::where('agence_id',auth()->user()->id)->get()
      ]);
     }
     else{
