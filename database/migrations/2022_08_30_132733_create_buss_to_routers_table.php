@@ -21,7 +21,6 @@ return new class extends Migration
             $table->foreign('agence_id')->references('id')->on('users')
                                          ->onUpdate('cascade')
                                          ->ondelete('cascade');
-                                         $table->unsignedBigInteger('agence_id');
             $table->foreign('buss_id')->references('id')->on('busses')
                                          ->onUpdate('cascade')
                                          ->ondelete('cascade');
