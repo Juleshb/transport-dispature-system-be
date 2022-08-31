@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('buss_to_routers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('agence_id');
+            $table->unsignedBigInteger('buss_id');
+            $table->unsignedBigInteger('router_id');
             $table->foreign('agence_id')->references('id')->on('users')
                                          ->onUpdate('cascade')
                                          ->ondelete('cascade');
