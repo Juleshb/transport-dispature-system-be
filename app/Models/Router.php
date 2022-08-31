@@ -18,4 +18,7 @@ use HasFactory;
 public function User(){
     return $this->belongsTo(User::class);
   }
+  public function router(){
+    return $this->belongsTo(BussToRouter::class);
+  }
 }

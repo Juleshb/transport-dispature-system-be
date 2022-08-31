@@ -11,6 +11,7 @@ use App\Http\Controllers\AgenceController;
 use App\Http\Controllers\BussController;
 use App\Http\Controllers\SystemUsersController;
 use App\Http\Controllers\RouterController;
+use App\Http\Controllers\BussToRouterController;
 
 
 /*
@@ -56,6 +57,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::GET('list-of-buss',[BussController::class,'showAll']);
     Route::post('addrouter', [RouterController::class, 'store']);
     Route::GET('list-of-router',[RouterController::class,'showAll']);
+    Route::post('addbusstorouter', [BussToRouterController::class, 'store']);
+    Route::GET('list-of-busstorouter',[BussToRouterController::class,'showAll']);
 
 
     Route::post('logout', [UserController::class, 'logout']);
