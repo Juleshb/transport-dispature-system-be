@@ -15,11 +15,11 @@ class BussToRouter extends Model
 ];
     use HasFactory;
 
-    public function buss(){
-        return $this->hasMany(buss::class);
-        }
-    public function router(){
-            return $this->hasMany(Router::class);
-          }
+    // public function buss(){
+    //     return $this->hasMany(buss::class);
+    //     }
+    // public function router(){
+    //         return $this->hasMany(Router::class);
+    //       }
 }
 
