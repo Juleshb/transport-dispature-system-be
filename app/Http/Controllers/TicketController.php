@@ -9,6 +9,7 @@ use App\Models\buss;
 use Faker\Provider\BKticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 class TicketController extends Controller
 {
     function Ticket()
@@ -18,6 +19,12 @@ return BKticket::all();
 
     public function store(request $request){
         if(auth()->user()->role== 3){
+            $request->validate(
+                [
+                        'company_id' => 'required'
+                        
+                        
+                ]);
             BKticket::create([
             'user_id'=>auth()->user()->id,
             'company_id'=>$request->input('company_id'),
