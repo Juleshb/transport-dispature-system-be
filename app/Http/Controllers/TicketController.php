@@ -18,9 +18,9 @@ return BKticket::all();
     }
 
     public function store(request $request){
-        if(auth()->user()->role== 3){
+        if(auth()->user()->role== 2){
             $request->validate(
-                [
+            [
                         'company_id' => 'required'
                         
                         
