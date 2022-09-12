@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BKticket;
 use App\Models\User;
 use App\Models\Agence;
 use App\Models\Router;
 use App\Models\buss;
-use Faker\Provider\BKticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
