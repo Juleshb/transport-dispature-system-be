@@ -36,7 +36,7 @@ Route::POST('/superadminregister',[SystemUsersController::class,'store']);
 Route::POST('/login',[SystemUsersController::class,'loginUser']);
 
 Route::POST('/role',[SystemUsersController::class,'rolestore']);
-Route::POST('/showAllrole',[SystemUsersController::class,'showAllrole']);
+Route::GET('/showAllrole',[SystemUsersController::class,'showAllrole']);
 Route::GET('/users',[SystemUsersController::class,'allusers']);
 
 
