@@ -18,7 +18,7 @@ return BKticket::all();
     }
 
     public function store(request $request){
-        if(auth()->user()->role== 2){
+        // if(auth()->user()->role== 2){
             $request->validate(
             [
                         'company_id' => 'required'
@@ -45,8 +45,9 @@ return BKticket::all();
                 'message' => 'your tichet has created',
 
         ]);
-    }
-    else{
-        return response(['message'=>'you are not allowed']);
-    }}
+    // }
+    // else{
+    //     return response(['message'=>'you are not allowed']);
+    // }
+}
 }
