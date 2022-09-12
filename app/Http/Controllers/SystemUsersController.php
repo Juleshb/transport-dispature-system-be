@@ -97,14 +97,10 @@ return response([
 ]);
 }
 public function showAllrole(){
-    if(auth()->user()->role== 1){
-   return response([
-      'companies list'=>Role::all()
-   ]);
-  }
-  else{
-    return response(['message'=>'you are not allowed to perform this action']);
-}
+    $role= Role::all();
+    return response([
+     'message'=>$role
+    ]);
 }
 public function allusers()
 {
