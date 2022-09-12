@@ -12,6 +12,7 @@ use App\Http\Controllers\BussController;
 use App\Http\Controllers\SystemUsersController;
 use App\Http\Controllers\RouterController;
 use App\Http\Controllers\BussToRouterController;
+use App\Http\Controllers\bktichet;
 
 
 /*
@@ -73,8 +74,8 @@ Route::middleware('auth:sanctum')->group(function () {
 //PASSENGERS ROUTERS
 Route::get('/passenger', [PassengerController::class, 'Passenger']);
 Route::post("/passengerregister",[PassengerController::class,'passengerregister']);
-Route::get('/ticket', [TicketController::class, 'Ticket']);
-Route::post('bktichket', [TicketController::class, 'store']);
+Route::get('/ticket', [bktichet::class, 'showAll']);
+Route::post('bktichket', [bktichet::class, 'store']);
 
 
 
