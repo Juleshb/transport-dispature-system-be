@@ -2,54 +2,44 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Agence;
+use App\Models\Router;
+use App\Models\buss;
+use Faker\Provider\BKticket;
 use Illuminate\Http\Request;
-use App\Models\Ticket;
+use Illuminate\Support\Facades\DB;
 class TicketController extends Controller
 {
     function Ticket()
     {
-return Ticket::all();
+return BKticket::all();
     }
 
-    public function index()
-    {
-        //
-        $post = Post::all();
-        return response()->json([
-            'message' => 'success',
-            'posts' => $post
-        ], 200);
-    }
+    public function store(request $request){
+        if(auth()->user()->role== 3){
+            BKticket::create([
+            'user_id'=>auth()->user()->id,
+            'company_id'=>$request->input('company_id'),
+            'router_id'=> $request->input('router_id'),
+            'buss_id'=>$request->input('buss_id'),
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        # code...
-        $this->validate(
-            $request,
-            [
-                'title' => 'required|max:200',
-                'content' => 'required|min:10',
-                'image' => 'required'
-            ]
-        );
-        $imagePath = $request->image->store('/uploads', 'public');
-        $post = $request->user()->posts()->create(
-            [
-                'title' => $request->title,
-                'content' => $request->content,
-                'image' => $imagePath
-            ]
-        );
+        $user = Auth::user();
+        $agence = $request->input('company_id');
+        $router = $request->input('router_id');
+        $buss = $request->input('buss_id');
+        return response([
+            'status' => true,
+                'user'=>$user->name,
+                'Agence name'=>DB::table('agences')->select('company_name')->where('id',$agence)->get(),
+                'Router'=>DB::table('routers')->select('router_name','amount')->where('id',$router)->get(),
+                'Buss'=>DB::table('busses')->select('buss-name','buss-code',)->where('id',$buss)->get(),
+                'message' => 'your tichet has created',
 
-        return response()->json([
-            'message' => 'success',
-            'post' => $post
-        ], 200);
+        ]);
     }
+    else{
+        return response(['message'=>'you are not allowed']);
+    }}
 }
