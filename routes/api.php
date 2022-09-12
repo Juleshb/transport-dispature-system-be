@@ -74,6 +74,7 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('/passenger', [PassengerController::class, 'Passenger']);
 Route::post("/passengerregister",[PassengerController::class,'passengerregister']);
 Route::get('/ticket', [TicketController::class, 'Ticket']);
+Route::post('bktichket', [TicketController::class, 'store']);
 
 
 
