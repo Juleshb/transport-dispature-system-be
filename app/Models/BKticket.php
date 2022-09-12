@@ -8,11 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class BKticket extends Model
 {
     use HasFactory;
-    protected $fillable=['user_id','company_id','router_id','buss_id'];
+    protected $fillable = [
+        'user_id',
+        'company_id',
+        'router_id',
+        'buss_id'];
     
-    public function user(){
+    public function User(){
         return $this->belongsTo(User::class);
-    }
+      }
     public function agence(){
         return $this->belongsTo(Agence::class);
     }
