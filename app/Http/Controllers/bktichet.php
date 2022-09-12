@@ -35,7 +35,7 @@ class bktichet extends Controller
      
 
        public function showAll(){
-        if(auth()->user()->role=='3'){
+        if(auth()->user()->role== 3){
             return BKticket::all();
     }
     else{
