@@ -38,6 +38,7 @@ class SystemUsersController extends Controller
             return response([
                 'status' => true,
                 'user'=>$user->name,
+                'rore id'=>$user->role,
                 'role_title'=>DB::table('roles')->select('role_name')->where('id',$user->role)->get(),
                 'message' => 'User Logged In Successfully',
                 'token' => $user->createToken('sanctumToken')->plainTextToken 
