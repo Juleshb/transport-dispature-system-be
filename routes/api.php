@@ -48,9 +48,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('user', [UserController::class, 'user']);
     Route::post('logout', [UserController::class, 'logout']);
     Route::POST('companyregister',[AgenceController::class,'store']);
-    Route::GET('list-of-company',[AgenceController::class,'showAll']);
     Route::PATCH('updatecompany/{company}',[AgenceController::class,'update']);
 });
+Route::GET('list-of-company',[AgenceController::class,'showAll']);
 
 // COMPANY ADIMIN
 Route::post("AdminLogin",[AgenceController::class,'AdminLogin']);
