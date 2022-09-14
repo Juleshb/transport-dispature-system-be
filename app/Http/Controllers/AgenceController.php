@@ -47,14 +47,10 @@ class AgenceController extends Controller
   }
     //show all companies
     public function showAll(){
-      if(auth()->user()->role== 1){
      return response([
         'companies list'=>Agence::all()
      ]);
-    }
-    else{
-      return response(['message'=>'you are not allowed to perform this action']);
-  }
+    
   }
     //update companies
     public function update(Agence $company,request $request){
