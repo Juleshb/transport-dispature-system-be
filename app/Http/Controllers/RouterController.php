@@ -36,7 +36,10 @@ class RouterController extends Controller
        public function showAll(){
         // if(auth()->user()->role=='2'){
      return response([
-        'Router list'=>Router::where('agence_id',auth()->user()->id)->get()
+        'Router list'=>DB::table('routers')
+        ->join('users', 'users.id', '=', 'routers.agence_id')
+        ->select('users.*', 'routers.*')
+        ->get();
      ]);
     // 
 }
