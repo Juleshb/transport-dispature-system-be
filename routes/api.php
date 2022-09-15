@@ -51,6 +51,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::PATCH('updatecompany/{company}',[AgenceController::class,'update']);
 });
 Route::GET('list-of-company',[AgenceController::class,'showAll']);
+Route::GET('list-of-router2',[RouterController::class,'showrout']);
 
 // COMPANY ADIMIN
 Route::post("AdminLogin",[AgenceController::class,'AdminLogin']);

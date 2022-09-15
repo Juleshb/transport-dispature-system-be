@@ -43,4 +43,16 @@ class RouterController extends Controller
     return response([
         'message'=>'you are not allowed'
     ]);
-    }}}
+    }}
+    public function showrout(Request $request){
+        
+        $request->validate([
+            'id'=>'required|id',
+          ]);
+          $id=$request->id,
+     return response([
+        'Router list'=>Router::where('agence_id',$id)->get()
+     ]);
+    }
+    
+}
