@@ -12,7 +12,8 @@ class bktichet extends Controller
         if(auth()->user()->role== 3){
         $request->validate(
         [
-            'company_id' => 'required'
+                'company_id' => 'required'
+              
                 
             ]
         );
@@ -25,12 +26,13 @@ class bktichet extends Controller
         );
 
         return response([
-            'results'=>'Router created successfully'
+            'results'=>'tichet created successfully'
           ]);}
           else{
             return response(['message'=>'you are not allowed to perform this action']);
         }
     }
+    
      //show all routers
      
 
