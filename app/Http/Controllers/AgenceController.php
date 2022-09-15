@@ -47,8 +47,12 @@ class AgenceController extends Controller
   }
     //show all companies
     public function showAll(){
+      $agences =DB::table('agences')
+      ->select('company_name')
+      ->get();
      return response([
-        'companies list'=>Agence::all()
+        'companies list'=>$agences
+        // Agence::all()
      ]);
     
   }
