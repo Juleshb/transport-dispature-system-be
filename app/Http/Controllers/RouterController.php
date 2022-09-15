@@ -44,15 +44,4 @@ class RouterController extends Controller
         'message'=>'you are not allowed'
     ]);
     }}
-    public function showrout(){
-        
-        
-     return response([
-        'Router list'=> DB::table('routers')
-            ->join('users', 'users.id', '=', 'routers.agence_id')
-            ->select('users.*', 'routers.*')
-            ->get();
-     ]);
-    }
-    
 }
