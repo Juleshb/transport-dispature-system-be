@@ -47,6 +47,18 @@ class AgenceController extends Controller
   }
     //show all companies
     public function showAll(){
+      if(auth()->user()->role== 1){
+     return response([
+        'companies list'=> Agence::all()
+     ]);
+    }
+    else{
+      return response(['message'=>'you are not allowed to perform this action']);
+  }
+    
+  }
+
+    public function showAll2(){
       $agences =DB::table('agences')
       ->select('company_name')
       ->get();
