@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Router;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RouterController extends Controller
 {
@@ -34,12 +36,16 @@ class RouterController extends Controller
      
 
        public function showAll(){
-        // if(auth()->user()->role=='2'){
+        if(auth()->user()->role=='2'){
      return response([
         'Router list'=>Router::where('agence_id',auth()->user()->id)->get()
      ]);
-    // 
-}
+    }
+    else{
+    return response([
+        'message'=>'you are not allowed'
+    ]);
+    }}
     public function showrout(){
         
         
