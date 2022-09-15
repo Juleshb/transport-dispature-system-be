@@ -48,10 +48,10 @@ class RouterController extends Controller
         
         
      return response([
-        'Router list'=> DB::table('routers')
-            ->join('users', 'users.id', '=', 'routers.agence_id')
-            ->select('users.*', 'routers.*')
-            ->get();
+        'Router list'=> DB::table('routers')select('routers.*')get();
+            // ->join('users', 'users.id', '=', 'routers.agence_id')
+            // ->select('users.*', 'routers.*')
+            // ->get();
      ]);
     }
     
