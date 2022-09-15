@@ -33,13 +33,23 @@ class RouterController extends Controller
         }
     }
      //show all routers
-     
+     public function showAll(){
+        if(auth()->user()->role=='2'){
+     return response([
+        'buss list'=>Router::where('agence_id',auth()->user()->id)->get()
+     ]);
+    }
+    else{
+    return response([
+        'message'=>'you are not allowed'
+    ]);
+    }}
 
-       public function showAll(){
+       public function showrout(){
         // if(auth()->user()->role=='2'){
             $router =DB::table('routers')
             ->join('users', 'users.id', '=', 'routers.agence_id')
-            ->select('users.*', 'routers.*')
+            ->select('users.name', 'routers.router_name','routers.amount')
             ->get();
      return response([
         'Router list'=>$router
