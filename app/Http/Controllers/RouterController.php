@@ -46,12 +46,12 @@ class RouterController extends Controller
     }}
     public function showrout(Request $request){
         
-        $request->validate([
-            'id'=>'required|id',
-          ]);
-          $id=$request->id,
+        
      return response([
-        'Router list'=>Router::where('agence_id',$id)->get()
+        'Router list'=> DB::table('routers')
+            ->join('users', 'users.id', '=', 'routers.agence_id')
+            ->select('users.*', 'routers.*')
+            ->get();
      ]);
     }
     
