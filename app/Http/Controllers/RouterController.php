@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Router;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RouterController extends Controller
 {
