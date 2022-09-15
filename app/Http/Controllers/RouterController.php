@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\Router;
-use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class RouterController extends Controller
 {
@@ -50,10 +48,10 @@ class RouterController extends Controller
         
         
      return response([
-        'Router list'=> DB::table('routers')select('routers.*')get();
-            // ->join('users', 'users.id', '=', 'routers.agence_id')
-            // ->select('users.*', 'routers.*')
-            // ->get();
+        'Router list'=> DB::table('routers')
+            ->join('users', 'users.id', '=', 'routers.agence_id')
+            ->select('users.*', 'routers.*')
+            ->get();
      ]);
     }
     
