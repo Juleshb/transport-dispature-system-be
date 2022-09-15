@@ -44,7 +44,7 @@ class RouterController extends Controller
         'message'=>'you are not allowed'
     ]);
     }}
-    public function showrout(Request $request){
+    public function showrout(){
         
         
      return response([
