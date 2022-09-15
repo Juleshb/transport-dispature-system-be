@@ -32,19 +32,8 @@ class bktichet extends Controller
         }
     }
      //show all routers
-     public function showAll(){
-        if(auth()->user()->role=='3'){
-     return response([
-        'buss list'=>Router::where('agence_id',auth()->user()->id)->get()
-     ]);
-    }
-    else{
-    return response([
-        'message'=>'you are not allowed'
-    ]);
-    }}
 
-       public function showrout(){
+       public function showAll(){
         // if(auth()->user()->role=='2'){
             $router =DB::table('routers')
             ->join('users', 'users.id', '=', 'routers.agence_id')
